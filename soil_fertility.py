@@ -30,7 +30,6 @@ st.title("Soil Fertility Predictor")
 N = st.number_input("Enter the value of nitrogen",1.00,500.00)
 P = st.number_input("Enter the value of phosphorus",1.00,500.00)
 K = st.number_input("Enter the value of potassium",1.00,500.00)
-field_size = st.number_input("Enter the area of field (in meter square)",1.00,20000.00)
 crop_list = ["Maize","Rice","Sugercane","Coconut"]
 crop = st.selectbox("Enter the crop harvested",crop_list)
 index = crop_list.index(crop)+1
@@ -65,8 +64,7 @@ if button_predict:
     if N < 100 or K < 100 or P < 100:
         result = "Non Fertile"
     
-    if N < 150 and K < 150 and P < 150 and field_size < 50: 
-        result = "Non Fertile"
+    
     
     else:
         result = model.predict([[7.74,0.4,0.01,0.01,N,P,K,0.48,6.4,0.21,4.7,84.3,6.8,8.9,6.72,7.81]])
